@@ -5,6 +5,9 @@ import { BrowserRouter, Route, Link } from "react-router-dom"; //link means like
 //web view at "./components/app.jsx"
 const App = () => {
   const languages = ["React", "Vue", "Angular"]; //array no: 0,1,2
+  const getDataFromAPI = (keyword) => {
+    return `${keyword} books`;
+  };
   return (
     <BrowserRouter>
       <div>
@@ -24,15 +27,30 @@ const App = () => {
         <Route
           exact
           path="/"
-          render={(props) => <Booklist language={languages[0]} />}
+          render={(props) => (
+            <Booklist
+              language={languages[0]}
+              getData={(keyword) => getDataFromAPI(keyword)}
+            />
+          )}
         />
         <Route
           path="/vue"
-          render={(props) => <Booklist language={languages[1]} />}
+          render={(props) => (
+            <Booklist
+              language={languages[1]}
+              getData={(keyword) => getDataFromAPI(keyword)}
+            />
+          )}
         />
         <Route
           path="/angular"
-          render={(props) => <Booklist language={languages[2]} />}
+          render={(props) => (
+            <Booklist
+              language={languages[2]}
+              getData={(keyword) => getDataFromAPI(keyword)}
+            />
+          )}
         />
       </div>
     </BrowserRouter>
