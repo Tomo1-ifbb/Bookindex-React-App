@@ -1,12 +1,15 @@
 import React from "react";
 import Booklist from "./components/Booklist";
 import { BrowserRouter, Route, Link } from "react-router-dom"; //link means like <a>
+import axios from "axios";
 
 //web view at "./components/app.jsx"
 const App = () => {
   const languages = ["React", "Vue", "Angular"]; //array no: 0,1,2
-  const getDataFromAPI = (keyword) => {
-    return `${keyword} books`;
+  const getDataFromAPI = async (keyword) => {
+    const requestUrl = "https://www.googleapis.com/books/v1/volumes?q=intitle:";
+    const result = await axios.get(`${requestUrl}${keyword}`);
+    return result;
   };
   return (
     <BrowserRouter>
