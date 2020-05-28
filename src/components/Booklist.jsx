@@ -20,7 +20,7 @@ const Booklist = (props) => {
           bookData.data.items.map((x, index) => (
             <li key={index}>
               {x.volumeInfo.readingModes.image}
-              {x.volumeInfo.title}　名前：{x.volumeInfo.authors}
+              {x.volumeInfo.title} {x.volumeInfo.authors}:著
             </li>
           ))
         )}
