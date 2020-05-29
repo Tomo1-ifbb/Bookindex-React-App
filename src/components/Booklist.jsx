@@ -9,6 +9,7 @@ const Booklist = (props) => {
       .getData?.(props.language)
       .then((response) => setBookData(response));
   }, [props]);
+  const imageStyle = { height: 200, width: 160 };
 
   return (
     <div>
@@ -16,16 +17,27 @@ const Booklist = (props) => {
         {bookData === null ? (
           <p>now loading...</p>
         ) : (
-          //bookData.data.items.map((x, index) => <li>{x.volumeInfo.title}</li>)
           bookData.data.items.map((x, index) => (
-            <li key={index}>
-              {x.volumeInfo.readingModes.image}
-              {x.volumeInfo.title}　名前：{x.volumeInfo.authors}
-            </li>
+            <div key={index}>
+              <li>
+                【{x.volumeInfo.title}】　{x.volumeInfo.authors}:著 （
+                {x.volumeInfo.publishedDate}）
+              </li>
+              {x.volumeInfo.imageLinks ? (
+                <img
+                  src={x.volumeInfo.imageLinks.thumbnail}
+                  alt=""
+                  style={imageStyle}
+                />
+              ) : (
+                <p style={imageStyle}></p>
+              )}
+            </div>
           ))
         )}
       </ul>
     </div>
   );
 };
+
 export default Booklist;
