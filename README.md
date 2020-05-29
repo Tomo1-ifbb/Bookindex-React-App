@@ -4,6 +4,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+### `npm install -g create-react-app`
+
+A react startup environment.
+This command built environment for your PC.
+
 ### `npm start`
 
 Runs the app in the development mode.<br />
